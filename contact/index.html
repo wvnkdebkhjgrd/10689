@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Kağıthane #10689 ile iletişime geçin. Sorularınız, önerileriniz ve sponsorluk teklifleriniz için bize ulaşın.">
+    <title>Contact | 10689</title>
+    <link rel="icon" type="image/png" href="../img/1.png">
+    <meta property="og:title" content="İletişim | Kağıthane #10689">
+    <meta property="og:description"
+        content="Kağıthane #10689 ile iletişime geçin. Sorularınız ve sponsorluk teklifleriniz için bize ulaşın.">
+    <meta property="og:image" content="../img/png.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+
+    <div class="page-bg page-enter">
+        <div class="animated-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <!-- Navbar injected by navbar.js -->
+
+        <section class="section" style="padding-top: 140px;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h1 class="section-title" data-tr="İletişim" data-en="Contact">İletişim</h1>
+                    <p class="section-desc"
+                        data-tr="Sorularınız, önerileriniz veya sponsorluk teklifleriniz için bizimle iletişime geçin."
+                        data-en="Get in touch with us for your questions, suggestions, or sponsorship proposals.">
+                        Sorularınız, önerileriniz veya sponsorluk teklifleriniz için bizimle iletişime geçin.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="glass-card reveal reveal-delay-1" style="padding: 40px;">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--color-white); margin-bottom: 24px;"
+                            data-tr="Bize Yazın" data-en="Write to Us">Bize Yazın</h3>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name" data-tr="Ad Soyad" data-en="Full Name">Ad Soyad</label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-tr="E-posta" data-en="Email">E-posta</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" data-tr="Konu" data-en="Subject">Konu</label>
+                                <input type="text" id="subject" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-tr="Mesajınız" data-en="Your Message">Mesajınız</label>
+                                <textarea id="message" class="form-textarea" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" style="margin-top: 8px;" data-tr="Gönder"
+                                data-en="Submit">Gönder</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="reveal reveal-delay-2">
+                        <div class="glass-card contact-info-card" style="margin-bottom: 24px;">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">✉</div>
+                                <div>
+                                    <p class="contact-info-label" data-tr="E-posta" data-en="Email">E-posta</p>
+                                    <p class="contact-info-value">kagithaneteknolojitakimi@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-icon">📍</div>
+                                <div>
+                                    <p class="contact-info-label" data-tr="Konum" data-en="Location">Konum</p>
+                                    <p class="contact-info-value" data-tr="Kağıthane, İstanbul, Türkiye"
+                                        data-en="Kağıthane, Istanbul, Turkey">Kağıthane, İstanbul, Türkiye</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="glass-card" style="padding: 32px;">
+                            <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--color-white); margin-bottom: 20px;"
+                                data-tr="Sosyal Medya" data-en="Social Media">Sosyal Medya</h3>
+                            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                                <a href="https://www.instagram.com/kagithane10689/" class="btn-ghost"
+                                    style="padding: 10px 20px; font-size: 0.85rem;">Instagram</a>
+                                <a href="https://www.linkedin.com/in/kağıthane-teknoloji-takımı-56607a3a7/"
+                                    class="btn-ghost" style="padding: 10px 20px; font-size: 0.85rem;">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer injected by navbar.js -->
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script>
+        (function () {
+            // =============================================
+            // EmailJS Yapılandırması
+            // Aşağıdaki 3 değeri kendi EmailJS hesabınızdan alın:
+            // =============================================
+            const EMAILJS_PUBLIC_KEY = 'ICblQyXz4ymgvcsI4';      // Account > API Keys
+            const EMAILJS_SERVICE_ID = 'service_pgock7r';      // Email Services > Service ID
+            const EMAILJS_TEMPLATE_ID = 'template_e11r3uf';    // Email Templates > Template ID
+
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+
+            const form = document.getElementById('contact-form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Çift gönderimi önle
+                if (submitBtn.disabled) return;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Gönderiliyor...';
+                submitBtn.style.opacity = '0.7';
+
+                const templateParams = {
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value || 'Konu belirtilmedi',
+                    message: document.getElementById('message').value
+                };
+
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function () {
+                        submitBtn.textContent = '✓ Gönderildi!';
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.background = 'linear-gradient(135deg, #00c853, #00e676)';
+                        form.reset();
+
+                        setTimeout(function () {
+                            submitBtn.textContent = originalBtnText;
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    })
+                    .catch(function (error) {
+                        console.error('EmailJS Error:', error);
+                        submitBtn.textContent = '✗ Hata oluştu';
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.background = 'linear-gradient(135deg, #ff1744, #ff5252)';
+
+                        setTimeout(function () {
+                            submitBtn.textContent = originalBtnText;
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    });
+            });
+        })();
+    </script>
+</body>
+
+</html>
