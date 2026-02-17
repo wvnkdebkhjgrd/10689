@@ -36,22 +36,20 @@
     let currentLang = localStorage.getItem('site-lang') || 'tr';
     let isMenuOpen = false;
 
+    // --- Known subpages ---
+    const knownPages = ['about', 'team', 'blog', 'contact'];
+
     // --- Get current page ---
     function getActivePage() {
         const segments = window.location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
-        const last = segments[segments.length - 1] || 'index';
-        // If last segment is index.html or empty, we're on the home page
-        if (last === 'index.html' || last === 'index') {
-            // Check if we're in a subfolder (like /about/index.html)
-            if (segments.length >= 2 && segments[segments.length - 2] !== '') {
-                const parent = segments[segments.length - 2];
-                if (['about', 'team', 'blog', 'contact'].includes(parent)) {
-                    return parent;
-                }
+        // Walk segments from the end to find a known page name
+        for (let i = segments.length - 1; i >= 0; i--) {
+            const seg = segments[i].replace('.html', '').replace('index', '');
+            if (knownPages.includes(seg)) {
+                return seg;
             }
-            return 'index';
         }
-        return last.replace('.html', '');
+        return 'index';
     }
 
     // --- Get base URL for assets ---
