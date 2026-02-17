@@ -39,23 +39,38 @@
     // --- Known subpages ---
     const knownPages = ['about', 'team', 'blog', 'contact'];
 
+    // --- Compute absolute base path from script location ---
+    // navbar.js is always loaded from <base>/js/navbar.js
+    // So we strip "js/navbar.js" to get the site root URL
+    const scriptEl = document.currentScript;
+    const siteBase = (function () {
+        if (scriptEl && scriptEl.src) {
+            // Script src is absolute URL like "https://x.github.io/repo/js/navbar.js"
+            // or "../js/navbar.js" resolved to absolute
+            const src = scriptEl.src;
+            const idx = src.lastIndexOf('js/navbar.js');
+            if (idx !== -1) {
+                return src.substring(0, idx); // "https://x.github.io/repo/"
+            }
+        }
+        return ''; // fallback
+    })();
+
     // --- Get current page ---
     function getActivePage() {
-        const segments = window.location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
-        // Walk segments from the end to find a known page name
-        for (let i = segments.length - 1; i >= 0; i--) {
-            const seg = segments[i].replace('.html', '').replace('index', '');
-            if (knownPages.includes(seg)) {
-                return seg;
+        const path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+        // Check if path ends with a known page name
+        for (const page of knownPages) {
+            if (path.endsWith('/' + page) || path.endsWith('/' + page + '/index.html')) {
+                return page;
             }
         }
         return 'index';
     }
 
-    // --- Get base URL for assets ---
+    // --- Get base URL for assets (absolute) ---
     function getBaseUrl() {
-        const page = getActivePage();
-        return page === 'index' ? '' : '../';
+        return siteBase;
     }
 
     // --- Build Navbar HTML ---
